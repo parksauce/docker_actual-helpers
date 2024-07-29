@@ -29,7 +29,6 @@ WORKDIR /app
 
 # Install dependencies and build the project
 RUN chmod +x /app/init.sh && \
-    npm install #@actual-app/api dotenv jsdom && \
-    #npm install
+    npm install
 
-CMD ["/bin/sh", "-c", "/app/init.sh"]
+ENTRYPOINT ["/bin/sh", "-c", "/app/init.sh"]

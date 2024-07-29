@@ -1,6 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 # Actual helper scripts startup
 
+echo "Creating env file"
 cat << EOF > .env
 ACTUAL_SERVER_URL=$ACTUAL_SERVER_URL
 ACTUAL_SERVER_PASSWORD=$ACTUAL_SERVER_PASSWORD
