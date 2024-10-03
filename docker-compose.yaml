@@ -1,0 +1,22 @@
+services:
+  acutal-helpers:
+    container_name: actual-helpers
+    image: parksauce/actual-helpers:latest
+    environment:
+      # Necessary
+      - SCRIPT=sync-banks.js
+      - ACTUAL_SERVER_URL=
+      - ACTUAL_SERVER_PASSWORD=
+      - ACTUAL_SYNC_ID=
+      # Optional
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - ACTUAL_FILE_PASSWORD=
+      - ACTUAL_CACHE_DIR=./cache
+      - IMPORTER_INTEREST_PAYEE_NAME=
+      - INVESTMENT_PAYEE_NAME=
+      - INVESTMENT_CATEGORY_GROUP_NAME=
+      - INVESTMENT_CATEGORY_NAME=
+      - SIMPLEFIN_CREDENTIALS=
+      - BITCOIN_PRICE_URL=
+      - BITCOIN_PRICE_JSON_PATH=
+      - BITCOIN_PAYEE_NAME=
