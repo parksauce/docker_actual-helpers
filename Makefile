@@ -6,6 +6,9 @@ IMAGE_NAME=actual-helpers
 login-to-docker:
 	docker login -u $(DOCKER_USER) -p $(DOCKER_PASS) $(REGISTRY)
 
+setup-buildx:
+	docker buildx create --name container-builder --driver docker-container --use --bootstrap
+
 build:
 	docker buildx build --load --platform amd64 -t $(REGISTRY)/$(REPO)/$(IMAGE_NAME):amd64 -t $(REGISTRY)/$(REPO)/$(IMAGE_NAME):amd64-$(DATE) .
 	docker buildx build --load --platform arm64 -t $(REGISTRY)/$(REPO)/$(IMAGE_NAME):arm64 -t $(REGISTRY)/$(REPO)/$(IMAGE_NAME):arm64-$(DATE) .
@@ -24,6 +27,7 @@ push-manifest:
 
 publish:
 	make login-to-docker
+	make setup-buildx
 	make build
 	make push
 	make create-manifest
