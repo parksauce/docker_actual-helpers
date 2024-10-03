@@ -24,20 +24,20 @@ The container will run to completion and stop, to keep it lightweight it doesn't
 |  Variable | Description | Default | Optional |
 |:---------:|:-----------:|:-------:|:--------:|
 | `SCRIPT` | Sets the script to run in the container | `sync-banks.js` | &#x2713; |
-| `ACTUAL_SERVER_URL` | The address of your actual-server instance | "" | |
-| `ACTUAL_SERVER_PASSWORD` | The password for your actual-server instance | "" | |
-| `ACTUAL_SYNC_ID` | The sync ID for your actual-server budget. You can get your sync ID from the advanced settings in your actual server. | "" | |
+| `ACTUAL_SERVER_URL` | The address of your actual-server instance |  | |
+| `ACTUAL_SERVER_PASSWORD` | The password for your actual-server instance |  | |
+| `ACTUAL_SYNC_ID` | The sync ID for your actual-server budget. You can get your sync ID from the advanced settings in your actual server. |  | |
 | `NODE_TLS_REJECT_UNAUTHORIZED` | Allow self-signed SSL certificates | 0 | &#x2713; |
-| `ACTUAL_FILE_PASSWORD` | Sets the password for encrypted files | "" | &#x2713; |
+| `ACTUAL_FILE_PASSWORD` | Sets the password for encrypted files |  | &#x2713; |
 | `ACTUAL_CACHE_DIR` | Allows you to change the cache directory | `./cache` | &#x2713; |
-| `INTEREST_PAYEE_NAME` | Name of the payee for added interest transactions | "" | &#x2713; |
-| `INVESTMENT_PAYEE_NAME` | Name of the payee for added interest transactions | "" | &#x2713; |
-| `INVESTMENT_CATEGORY_GROUP_NAME` | Name of the category group for added investment tracking | "" | &#x2713; |
-| `INVESTMENT_CATEGORY_NAME` | Name of the category for added investment tracking | "" | &#x2713; |
-| `SIMPLEFIN_CREDENTIALS` | For logging into SimpleFin. Credentials, not the setup token! | "" | &#x2713; |
-| `BITCOIN_PRICE_URL` | Host for retrieving Bitcoin price | "" | &#x2713; |
-| `BITCOIN_PRICE_JSON_PATH` | JSON path for retrieving Bitcoin price | "" | &#x2713; |
-| `BITCOIN_PAYEE_NAME` | Name of the payee for Bitcoin price changes | "" | &#x2713; |
+| `INTEREST_PAYEE_NAME` | Name of the payee for added interest transactions |  | &#x2713; |
+| `INVESTMENT_PAYEE_NAME` | Name of the payee for added interest transactions |  | &#x2713; |
+| `INVESTMENT_CATEGORY_GROUP_NAME` | Name of the category group for added investment tracking |  | &#x2713; |
+| `INVESTMENT_CATEGORY_NAME` | Name of the category for added investment tracking |  | &#x2713; |
+| `SIMPLEFIN_CREDENTIALS` | For logging into SimpleFin. Credentials, not the setup token! |  | &#x2713; |
+| `BITCOIN_PRICE_URL` | Host for retrieving Bitcoin price |  | &#x2713; |
+| `BITCOIN_PRICE_JSON_PATH` | JSON path for retrieving Bitcoin price |  | &#x2713; |
+| `BITCOIN_PAYEE_NAME` | Name of the payee for Bitcoin price changes |  | &#x2713; |
 
 ### Docker Compose
 Theres an example compose file available in the github, you can pull it to your local machine using the command below.
