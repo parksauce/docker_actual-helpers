@@ -2,9 +2,13 @@ name: build-images
 
 on:
   push:
-    branches: [ master ]
+    paths:
+      - Dockerfile
+      - init.sh
   pull_request:
-    branches: [ master ]
+    paths:
+      - Dockerfile
+      - init.sh
 
 jobs:
  build:
@@ -12,5 +16,9 @@ jobs:
    steps:
    - name: checkout repo
      uses: actions/checkout@main
-   - name: build application
+
+   - name: Analyze with shellcheck
+     run: docker run --rm -v $(pwd):/script koalaman/shellcheck:stable /script/init.sh
+
+   - name: build container
      run: make publish DOCKER_USER=${{ secrets.DOCKER_USER }} DOCKER_PASS=${{ secrets.DOCKER_TOKEN }}
