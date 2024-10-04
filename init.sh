@@ -35,4 +35,4 @@ BITCOIN_PAYEE_NAME=$BITCOIN_PAYEE_NAME
 EOF
 
 echo "Running $SCRIPT"
-node /app/$SCRIPT
+node /app/"$SCRIPT"
