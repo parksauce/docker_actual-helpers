@@ -1,18 +1,18 @@
-# Stage 1: Build Stage
+# Stage 1: Get Dependencies
 FROM alpine:latest AS build
 
-# Install Node.js and npm (and git if needed)
+# Install git
 RUN apk add --no-cache git
 
-# Set working directory
 WORKDIR /app
 
 # Clone the repository
 RUN git clone https://github.com/psybers/actual-helpers.git
 
-# Stage 2: Final Stage
+# Stage 2: Package
 FROM node:21-alpine
 
+# Define environment variables
 ENV ACTUAL_SERVER_URL=""
 ENV ACTUAL_SERVER_PASSWORD=""
 ENV ACTUAL_SYNC_ID=""
@@ -29,14 +29,15 @@ ENV BITCOIN_PRICE_JSON_PATH=""
 ENV BITCOIN_PAYEE_NAME=""
 ENV SCRIPT="sync-banks.js"
 
-# Copy built artifacts from the build stage
+# Copy build artifacts
 COPY --from=build /app/actual-helpers /app
 COPY init.sh /app
 
 WORKDIR /app
 
-# Install dependencies and build the project
+# Install dependencies
 RUN chmod +x /app/init.sh && \
     npm install
 
+# Define entrypoint
 ENTRYPOINT ["/bin/sh", "-c", "/app/init.sh"]
