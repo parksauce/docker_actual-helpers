@@ -26,6 +26,7 @@ push-manifest:
 	docker manifest push $(REGISTRY)/$(REPO)/$(IMAGE_NAME):$(DATE)
 
 publish:
+	make shellcheck
 	make login-to-docker
 	make setup-buildx
 	make build
@@ -45,3 +46,6 @@ test:
 cleanup-test:
 	docker rm -f actual-helpers-test
 	docker rmi -f actual-helpers:alpha
+
+shellcheck:
+	docker run --rm -v $(pwd):/script koalaman/shellcheck:stable /script/init.sh

@@ -1,6 +1,7 @@
-name: build-images
+name: Build Images
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - Dockerfile
@@ -16,9 +17,6 @@ jobs:
    steps:
    - name: checkout repo
      uses: actions/checkout@main
-
-   - name: Analyze with shellcheck
-     run: docker run --rm -v $(pwd):/script koalaman/shellcheck:stable /script/init.sh
 
    - name: build container
      run: make publish DOCKER_USER=${{ secrets.DOCKER_USER }} DOCKER_PASS=${{ secrets.DOCKER_TOKEN }}
