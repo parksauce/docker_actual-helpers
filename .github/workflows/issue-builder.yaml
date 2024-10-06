@@ -5,7 +5,7 @@ on:
 
 jobs:
   issue-handler:
-    if: contains(github.event.issues.labels.*.name, 'trigger-build')
+    if: ${{ github.event.issues.labels.*.name }} == "trigger-build"
     runs-on: ubuntu-latest
 
     steps:
@@ -36,7 +36,7 @@ jobs:
         id: check_build_status
         run: |
           build_run_id=${{ needs.issue-handler.outputs.build_run_id }}
-          
+
           while true; do
             status=$(curl -s \
               -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
