@@ -30,7 +30,7 @@ jobs:
 
   issue-resolver:
     needs: issue-handler
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Check build status
         id: check_build_status
