@@ -2,15 +2,18 @@ services:
   acutal-helpers:
     container_name: actual-helpers
     image: parksauce/actual-helpers:latest
+    ## uncomment the line below to specify the script by command
+    #command: sync-banks.js
+    ## uncomment the lines below to use a env file
     #env_file:
     #  - .env
     environment:
-    # # Necessary
-      - SCRIPT=sync-banks.js
+    ## Necessary
       - ACTUAL_SERVER_URL=
       - ACTUAL_SERVER_PASSWORD=
       - ACTUAL_SYNC_ID=
-    # # Optional
+    ## Optional
+    #  - SCRIPT=sync-banks.js
     #  - NODE_TLS_REJECT_UNAUTHORIZED=1
     #  - ACTUAL_FILE_PASSWORD=
     #  - ACTUAL_CACHE_DIR=./cache
