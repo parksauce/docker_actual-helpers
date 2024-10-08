@@ -1,4 +1,5 @@
 DATE=$(shell date +%Y%m%d)
+PWD=$(shell pwd)
 REGISTRY=docker.io
 REPO=parksauce
 IMAGE_NAME=actual-helpers
@@ -48,4 +49,4 @@ cleanup-test:
 	docker rmi -f actual-helpers:alpha
 
 shellcheck:
-	docker run --rm -v $(pwd):/script koalaman/shellcheck:stable /script/init.sh
+	docker run --rm -v $(PWD):/script koalaman/shellcheck:stable /script/init.sh
