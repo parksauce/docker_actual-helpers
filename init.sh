@@ -1,6 +1,12 @@
 #!/bin/sh
 # Actual helper scripts startup
 
+# Set SCRIPT to input if exists
+if [ -n "$1" ]; then
+    SCRIPT="$1"
+fi
+
+# Define .env file
 echo "Creating env file"
 cat << EOF > .env
 ACTUAL_SERVER_URL=$ACTUAL_SERVER_URL
@@ -34,5 +40,6 @@ BITCOIN_PRICE_JSON_PATH=$BITCOIN_PRICE_JSON_PATH
 BITCOIN_PAYEE_NAME=$BITCOIN_PAYEE_NAME
 EOF
 
+# Run script
 echo "Running $SCRIPT"
 node /app/"$SCRIPT"

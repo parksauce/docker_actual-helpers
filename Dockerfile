@@ -39,5 +39,5 @@ WORKDIR /app
 RUN chmod +x /app/init.sh && \
     npm install
 
-# Define entrypoint
-ENTRYPOINT ["/bin/sh", "-c", "/app/init.sh"]
+# Define startup command, using CMD so its overwriteable
+ENTRYPOINT ["/bin/sh", "/app/init.sh"]
