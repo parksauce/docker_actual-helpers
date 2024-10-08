@@ -1,0 +1,11 @@
+name: Sleep
+on:
+  workflow_dispatch:
+
+jobs:
+  issue-handler:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: sleep
+        run: sleep 60
