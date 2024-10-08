@@ -3,31 +3,28 @@
 All credit for the project go to the developers over at [psybers/actual-helpers](https://github.com/psybers/actual-helpers). I simply package the scripts into an easy to deploy and customize container.
 
 ## Table of Contents
-- [Deployment](#deployment)
-    - [Quick Start](#quick-start)
-    - [Environment Variables](#environment-variables)
-    - [Docker Compose](#docker-compose) 
+- [Quick Start](#quick-start)
+- [Environment Variables](#environment-variables)
+- [Docker Compose](#docker-compose) 
 
-## Deployment
-
-### Quick Start 
-Deploying the container is a fairly simple process, there are three required variables and this can vary depending on the scripts you'd like to use those are `ACTUAL_SERVER_URL`, `ACTUAL_SERVER_PASSWORD`, and `ACTUAL_SYNC_ID`, see the [environment variables](#environment-variables) section for more information. By default this container is configured to run the `sync-banks.js` script. If you'd like to change this set the `SCRIPT` varaible to the name of the script you'd like to run. 
+## Quick Start 
+Deploying the container is a fairly simple process, there are three required variables and this can vary depending on the scripts you'd like to use those are `ACTUAL_SERVER_URL`, `ACTUAL_SERVER_PASSWORD`, and `ACTUAL_SYNC_ID`, see the [environment variables](#environment-variables) section for more information. By default this container is configured to run the `sync-banks.js` script. If you'd like to change this set the command at the end of the `docker run` command to the script name, otherwise you can set it in the `SCRIPT` variable. 
 
 To run the container you can use the following `docker run` command.
 ```shell
-docker run --name=actual-helpers -e ACTUAL_SERVER_URL="https://budget.example.com" -e ACTUAL_SERVER_PASSWORD="1234" -e ACTUAL_SYNC_ID="1234" -e SCRIPT="sync-banks.js parksauce/actual-helpers:latest"
+docker run --name=actual-helpers -e ACTUAL_SERVER_URL="https://budget.example.com" -e ACTUAL_SERVER_PASSWORD="1234" -e ACTUAL_SYNC_ID="1234" parksauce/actual-helpers:latest sync-banks.js
 ```
 
 The container will run to completion and stop, to keep it lightweight it doesn't have a cron mechanism built into it. If you'd like to run it on a schedule then you'll have to configure a CronJob to run the command on a schedule there's plenty of guides out there on this already so I won't delve into this.
 
-### Environment Variables
+## Environment Variables
 |  Variable | Description | Default | Optional |
 |:---------:|:-----------:|:-------:|:--------:|
 | `SCRIPT` | Sets the script to run in the container | `sync-banks.js` | &#x2713; |
 | `ACTUAL_SERVER_URL` | The address of your actual-server instance |  | |
 | `ACTUAL_SERVER_PASSWORD` | The password for your actual-server instance |  | |
 | `ACTUAL_SYNC_ID` | The sync ID for your actual-server budget. You can get your sync ID from the advanced settings in your actual server. |  | |
-| `NODE_TLS_REJECT_UNAUTHORIZED` | Allow self-signed SSL certificates | 0 | &#x2713; |
+| `NODE_TLS_REJECT_UNAUTHORIZED` | Allow self-signed SSL certificates | `0` | &#x2713; |
 | `ACTUAL_FILE_PASSWORD` | Sets the password for encrypted files |  | &#x2713; |
 | `ACTUAL_CACHE_DIR` | Allows you to change the cache directory | `./cache` | &#x2713; |
 | `INTEREST_PAYEE_NAME` | Name of the payee for added interest transactions |  | &#x2713; |
@@ -39,7 +36,7 @@ The container will run to completion and stop, to keep it lightweight it doesn't
 | `BITCOIN_PRICE_JSON_PATH` | JSON path for retrieving Bitcoin price |  | &#x2713; |
 | `BITCOIN_PAYEE_NAME` | Name of the payee for Bitcoin price changes |  | &#x2713; |
 
-### Docker Compose
+## Docker Compose
 Theres an example compose file available in the github, you can pull it to your local machine using the command below.
 ```shell
 wget https://raw.githubusercontent.com/realjoshparker/docker_actual-helpers/refs/heads/master/docker-compose.yaml
@@ -52,7 +49,7 @@ ACTUAL_SERVER_PASSWORD=myPassword
 ACTUAL_SYNC_ID=< sync ID >
 ```
 
-To start the container you can run the command below.
+To start the container you can run the command below. To run it in the background pass in the `-d` flag.
 ```shell
 docker compose up
 ```
