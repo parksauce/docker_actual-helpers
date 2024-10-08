@@ -1,5 +1,6 @@
 name: Issue Builder
 on:
+  workflow_dispatch:
   issues:
     types: [opened, labeled]
 
