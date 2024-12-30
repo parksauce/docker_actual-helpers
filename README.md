@@ -39,7 +39,7 @@ The container will run to completion and stop, to keep it lightweight it doesn't
 ## Docker Compose
 Theres an example compose file available in the github, you can pull it to your local machine using the command below.
 ```shell
-wget https://raw.githubusercontent.com/realjoshparker/docker_actual-helpers/refs/heads/master/docker-compose.yaml
+wget https://raw.githubusercontent.com/parksauce/docker_actual-helpers/refs/heads/master/docker-compose.yaml
 ```
 
 Once downloaded go ahead and modify the values to suit your needs, for more information on the different environment variables see [here](#environment-variables). I'd advise against putting the `ACTUAL_SERVER_PASSWORD` in the compose file directly, instead place them in a `.env` file and set the permissions to `600`. Your `.env` file can look like below.
