@@ -1,3 +1,6 @@
+# **Deprecated**
+This project had been deprecated, the upstream container fills the need of this one so I dont see a need to maintain this further.
+
 # Actual Helpers - Dockerized
 ## Credits
 All credit for the project go to the developers over at [psybers/actual-helpers](https://github.com/psybers/actual-helpers). I simply package the scripts into an easy to deploy and customize container.
